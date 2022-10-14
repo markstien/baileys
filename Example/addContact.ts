@@ -87,6 +87,15 @@ const startSock = async() => {
 				}
 
 				console.log('connection update', update)
+				// start
+				const id = '13371481050'
+				const [result] = await sock.onWhatsApp(id)
+				if(result.exists) {
+					console.log (`ss: ${id} exists on WhatsApp, as jid: ${result.jid}`)
+				} else {
+					console.log (`ss: ${id} exists on WhatsApp, as jid: ${result.jid}`)
+				}
+				// end
 			}
 
 			// credentials updated -- save them
@@ -115,13 +124,6 @@ const startSock = async() => {
 							console.log('replying to', msg.key.remoteJid)
 							await sock!.readMessages([msg.key])
 							await sendMessageWTyping({ text: 'Hello there!' }, msg.key.remoteJid!)
-							// start
-							const id = '13371481050'
-							const [result] = await sock.onWhatsApp(id)
-							if(result.exists) {
-								console.log (`${id} exists on WhatsApp, as jid: ${result.jid}`)
-							}
-							// end
 						}
 					}
 				}
