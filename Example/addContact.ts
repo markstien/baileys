@@ -88,12 +88,16 @@ const startSock = async() => {
 
 				console.log('connection update', update)
 				// start
-				const id = '13371481050'
-				const [result] = await sock.onWhatsApp(id)
-				if(result.exists) {
-					console.log (`ss: ${id} exists on WhatsApp, as jid: ${result.jid}`)
-				} else {
-					console.log (`ss: ${id} exists on WhatsApp, as jid: ${result.jid}`)
+				try {
+					const id = '13371481050'
+					const [result] = await sock.onWhatsApp(id)
+					if(result.exists) {
+						console.log (`ss: ${id} exists on WhatsApp, as jid: ${result.jid}`)
+					} else {
+						console.log (`ss: ${id} exists on WhatsApp, as jid: ${result.jid}`)
+					}
+				} catch(e) {
+					console.log (`ss: ${e}`)
 				}
 				// end
 			}
